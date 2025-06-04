@@ -30,9 +30,9 @@ backend_deploy:
   image: docker:20.10
   script:
     - cd backend
-    - docker build -t ecommerce-be-node .
+    - docker build -t belavu9999/ecommerce-be-node .
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push ecommerce-be-node
+    - docker push belavu9999/ecommerce-be-node
   only:
     - master
 
