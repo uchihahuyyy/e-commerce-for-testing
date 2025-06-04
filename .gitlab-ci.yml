@@ -31,7 +31,7 @@ backend_deploy:
   script:
     - cd backend
     - docker build -t ecommerce-be-node .
-    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - docker push ecommerce-be-node
   only:
     - master
@@ -61,7 +61,7 @@ frontend_deploy:
   script:
     - cd frontend
     - docker build -t ecommerce-fe .
-    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - docker push ecommerce-fe
   only:
     - master
