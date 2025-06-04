@@ -33,6 +33,7 @@ backend_deploy:
     - docker build -t belavu9999/ecommerce-be-node .
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - docker push belavu9999/ecommerce-be-node
+    - docker run -d -p 4000:4000 --name ecommerce-be belavu9999/ecommerce-be-node
   only:
     - master
 
@@ -63,5 +64,6 @@ frontend_deploy:
     - docker build -t belavu9999/ecommerce-fe .
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - docker push belavu9999/ecommerce-fe
+    - docker run -d -p 3000:3000 --name ecommerce-fe belavu9999/ecommerce-fe
   only:
     - master
