@@ -60,8 +60,8 @@ frontend_deploy:
   image: docker:20.10
   script:
     - cd frontend
-    - docker build -t ecommerce-fe .
+    - docker build -t belavu9999/ecommerce-fe .
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push ecommerce-fe
+    - docker push belavu9999/ecommerce-fe
   only:
     - master
