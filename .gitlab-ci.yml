@@ -1,0 +1,41 @@
+stages:
+  - build
+  - test
+
+backend_build:
+  stage: build
+  image: node:lts
+  script:
+    - cd backend
+    - npm install
+    - npm run build
+  only:
+    - master
+
+backend_test:
+  stage: test
+  image: node:lts
+  script:
+    - cd backend
+    - npm test
+  only:
+    - master
+
+frontend_build:
+  stage: build
+  image: node:lts
+  script:
+    - cd frontend
+    - npm install
+    - npm run build
+  only:
+    - master
+
+frontend_test:
+  stage: test
+  image: node:lts
+  script:
+    - cd frontend
+    - npm test
+  only:
+    - master
