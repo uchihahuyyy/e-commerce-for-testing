@@ -1,6 +1,10 @@
 stages:
   - build
   - test
+  - deploy
+
+services:
+  - docker:dind
 
 backend_build:
   stage: build
@@ -21,6 +25,17 @@ backend_test:
   only:
     - master
 
+backend_deploy:
+  stage: deploy
+  image: docker:20.10
+  script:
+    - cd backend
+    - docker build -t ecommerce-be-node .
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - docker push ecommerce-be-node
+  only:
+    - master
+
 frontend_build:
   stage: build
   image: node:lts
@@ -37,5 +52,16 @@ frontend_test:
   script:
     - cd frontend
     - npm test
+  only:
+    - master
+
+frontend_deploy:
+  stage: deploy
+  image: docker:20.10
+  script:
+    - cd frontend
+    - docker build -t ecommerce-fe .
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - docker push ecommerce-fe
   only:
     - master
