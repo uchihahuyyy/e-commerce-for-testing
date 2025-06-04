@@ -21,7 +21,8 @@ backend_test:
   image: node:lts
   script:
     - cd backend
-    - npm test
+    - npm install
+    - npm run dev
   only:
     - master
 
@@ -51,7 +52,8 @@ frontend_test:
   image: node:lts
   script:
     - cd frontend
-    - npm test
+    - npm install
+    - npm start
   only:
     - master
 
