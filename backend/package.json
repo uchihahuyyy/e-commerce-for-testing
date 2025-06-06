@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/app.js",
-    "build": "sucrase ./src -d ./dist --transforms imports"
+    "build": "sucrase ./src -d ./dist --out-file index.js --transforms imports"
   },
   "dependencies": {
     "accesscontrol": "^2.2.1",

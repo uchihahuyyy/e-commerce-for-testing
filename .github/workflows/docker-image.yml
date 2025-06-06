@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4  # Loại bỏ 'with: repository'
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4  # Loại bỏ 'with: repository'
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
@@ -46,7 +46,7 @@ jobs:
         context: ./backend
         file: ./backend/Dockerfile
         push: true
-        tags: taquocy6191/e-be-node-app:latest
+        tags: phantranxuanhuy/e-be-node-app:latest
 
   open-pull-request:
     runs-on: ubuntu-latest
@@ -54,8 +54,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-
+      uses: actions/checkout@v2  # Loại bỏ 'with: repository'
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
